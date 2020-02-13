@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Laravel-admin',
+    'name' => 'Bar-Management',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Laravel</b> admin',
+    'logo' => '<b>Bar Management</b> admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>BM</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -250,7 +250,7 @@ return [
     | Set a default avatar for newly created users.
     |
     */
-    'default_avatar' => '/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg',
+    'default_avatar' => '/admin/media/download?file=avatar.jpeg',
 
     /*
     |--------------------------------------------------------------------------
@@ -403,7 +403,8 @@ return [
         'media-manager' => [
         
             // Select a local disk that you configured in `config/filesystem.php`
-            'disk' => 'public'
+            'disk' => 'public',
+            
         ]
     ],
 ];
