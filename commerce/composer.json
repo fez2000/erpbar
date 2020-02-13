@@ -11,6 +11,10 @@
         "php": "^7.2",
         "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "^4.0",
+        "jxlwqq/material-ui": "^1.0",
+        "laravel-admin-ext/helpers": "^1.2",
+        "laravel-admin-ext/log-viewer": "^1.0",
+        "laravel-admin-ext/media-manager": "^1.1",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0"
     },

@@ -311,7 +311,7 @@ return [
     | each page
     |
     */
-    'show_version' => true,
+    'show_version' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -321,7 +321,7 @@ return [
     | Whether to display the environment at the footer of each page
     |
     */
-    'show_environment' => true,
+    'show_environment' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -396,6 +396,14 @@ return [
     |
     */
     'extensions' => [
-
+        'material-ui' => [
+        // If the value is set to false, this extension will be disabled
+            'enable' => false
+        ],
+        'media-manager' => [
+        
+            // Select a local disk that you configured in `config/filesystem.php`
+            'disk' => 'public'
+        ]
     ],
 ];
