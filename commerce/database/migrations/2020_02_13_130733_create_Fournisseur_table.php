@@ -16,6 +16,7 @@ class CreateFournisseurTable extends Migration
         Schema::create('Fournisseur', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->image('picture')->uniqueName();
             $table->timestamps();
         });
     }

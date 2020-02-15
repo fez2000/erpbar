@@ -11,5 +11,15 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('admin.home');
-
+    //$router->get('/stock/fournisseur', 'Fournissuer@index')->name('admin.home');
+    Route::prefix('stock')->group(function(){
+ 
+        Route::resource('/fournisseur', 'FournisseurController');
+        Route::resource('/produitcathegorie', 'CathegorieController');
+    });
+    Route::prefix('comptabilite')->group(function(){
+ 
+        //Route::resource('/cour', 'CourPlanningController');
+        
+    });
 });

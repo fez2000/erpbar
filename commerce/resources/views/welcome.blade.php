@@ -65,34 +65,28 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
+          
+            <div class="top-right links">
+                    
                         <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+                    
+                        <a href="{{ url('admin') }}">Admin</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
+                    
+                    
+            </div>
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Bar-managemnt
                 </div>
-
+                <div class="subtitle m-b-md">
+                    gagner en performance avec votre logiciel de gestion bar
+                </div>
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/admin/comptabilite">Comptabitite</a>
+                    <a href="/admin/paie">Paie</a>
+                    <a href="/admin/stock">Stock</a>
+
                 </div>
             </div>
         </div>

@@ -83,6 +83,7 @@ class FournisseurController extends Controller
 
         $grid->id('ID');
         $grid->name('name');
+        $grid->image('picture');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
 

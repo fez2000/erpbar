@@ -10,7 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class CathegorieModel extends Controller
+class CathegorieController extends Controller
 {
     use HasResourceActions;
 

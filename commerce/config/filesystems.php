@@ -54,7 +54,12 @@ return [
             'url' => '/admin/media/download?file=',
             'visibility' => 'public',
         ],
-
+        'admin' => [
+            'driver' => 'local',
+            'root' => storage_path('app/admin'),
+            'visibility' => 'public',
+            'url' => '/uploads/',
+        ],
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
