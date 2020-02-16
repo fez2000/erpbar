@@ -17,7 +17,12 @@ pour lancer le server laravel vous devez
   $ mv .env.example .env
   $ nano .env
 ```
-puis ajouter l'app key `APP_KEY=base64:le3ZfyBm1XvICvHmefuzAf9PGyI/8+ieUSmC1ueUjVA=`
+puis ajouter l'app key 
+```
+ APP_KEY=base64:le3ZfyBm1XvICvHmefuzAf9PGyI/8+ieUSmC1ueUjVA=
+ DB_CONNECTION=sqlite
+```
+remove line `DB_DATABASE=laravel`
 ```sh
   $ php artisan serve
 ```
