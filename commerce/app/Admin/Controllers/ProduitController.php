@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\ProduitModel;
+use App\Models\CathegorieModel;
 use App\Models\FournisseurModel;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -10,7 +12,8 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class FournisseurController extends Controller
+
+class ProduitController extends Controller
 {
     use HasResourceActions;
 
@@ -79,13 +82,22 @@ class FournisseurController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new FournisseurModel);
+        $grid = new Grid(new ProduitModel);
 
         $grid->id('ID');
         $grid->name('name');
+        $grid->cathegorie('cathegorie')->display(function($id) {
+            return FournisseurModel::find($id)->name;
+        });
         $grid->picture('picture');
+        $grid->type('type')->display(function($id) {
+            return CathegorieModel::find($id)->name;
+        });
+        $grid->prix_achat('prix_achat');
+        $grid->prix_vente('prix_vente');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
+        
 
         return $grid;
     }
@@ -98,11 +110,19 @@ class FournisseurController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(FournisseurModel::findOrFail($id));
+        $show = new Show(ProduitModel::findOrFail($id));
 
         $show->id('ID');
         $show->name('name');
+        $show->cathegorie('cathegorie')->display(function($id) {
+            return FournisseurModel::find($id)->name;
+        });
         $show->picture('picture')->image();
+        $show->type('type')->display(function($id) {
+            return CathegorieModel::find($id)->name;
+        });
+        $show->prix_achat('prix_achat');
+        $show->prix_vente('prix_vente');
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
 
@@ -116,13 +136,26 @@ class FournisseurController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new FournisseurModel);
+        $form = new Form(new ProduitModel);
 
+        
+        $form->column(1/2,function($form){
         $form->display('ID');
-        $form->text('name', 'name');
-        $form->image('picture')->removable();
+        $form->text('name', 'name')->rules('required');
+        $form->select('cathegorie','cathegorie')->options(FournisseurModel::all()->pluck('name', 'id'))->default(1)->rules('required');
+        
+        $form->select('type','type')->options(CathegorieModel::all()->pluck('name', 'id'))->default(1)->rules('required');
+        $form->currency('prix_achat', 'prix_achat')->symbol('FCFA');
+        $form->currency('prix_vente', 'prix_vente')->symbol('FCFA');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));
+        });
+        $form->column(1/2,function($form){
+            $form->image('picture', 'picture');
+            
+        });
+
+       
 
         return $form;
     }

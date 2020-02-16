@@ -13,7 +13,7 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('admin.home');
     //$router->get('/stock/fournisseur', 'Fournissuer@index')->name('admin.home');
     Route::prefix('stock')->group(function(){
- 
+        Route::resource('/produit', 'ProduitController');
         Route::resource('/fournisseur', 'FournisseurController');
         Route::resource('/produitcathegorie', 'CathegorieController');
     });
