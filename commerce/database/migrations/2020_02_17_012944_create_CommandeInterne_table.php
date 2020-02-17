@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployerTable extends Migration
+class CreateCommandeInterneTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateEmployerTable extends Migration
      */
     public function up()
     {
-        Schema::create('Employer', function (Blueprint $table) {
+        Schema::create('CommandeInterne', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom');
-            $table->string('image')->nullable();
-            $table->integer('poste')->index();
-            $table->string('telephone')->nullable();
-            $table->integer('compte')->index()->nullable();
+            $table->integer('auteur')->index();
+            $table->enum('status',['ENCOUR','VALIDER','REJETER'])->default('ENCOUR');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateEmployerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Employer');
+        Schema::dropIfExists('CommandeInterne');
     }
 }

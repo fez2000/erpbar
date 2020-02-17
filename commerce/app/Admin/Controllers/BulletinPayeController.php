@@ -1,19 +1,16 @@
 <?php
 
 namespace App\Admin\Controllers;
-
 use App\Models\EmployerModel;
+use App\Models\BulletinPayeModel;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use App\Models\PosteModel;
-use Encore\Admin\Auth\Database\Administrator;
 
-
-class EmployerController extends Controller
+class BulletinPayeController extends Controller
 {
     use HasResourceActions;
 
@@ -82,16 +79,12 @@ class EmployerController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new EmployerModel);
+        $grid = new Grid(new BulletinPayeModel);
 
         $grid->id('ID');
-        $grid->nom('nom');
-        $grid->image('image');
-        $grid->poste('poste')->display(function($id) {
-            return PosteModel::find($id)->name;
-        });
-        $grid->telephone('telephone');
-        $grid->compte('compte');
+        $grid->employer_id('employer_id');
+        $grid->date('date');
+        $grid->salaire('salaire');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
 
@@ -106,16 +99,12 @@ class EmployerController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(EmployerModel::findOrFail($id));
+        $show = new Show(BulletinPayeModel::findOrFail($id));
 
         $show->id('ID');
-        $show->nom('nom');
-        $show->image('image')->image();
-        $show->poste('poste')->display(function($id) {
-            return PosteModel::find($id)->name;
-        });
-        $show->telephone('telephone');
-        $show->compte('compte');
+        $show->employer_id('employer_id');
+        $show->date('date');
+        $show->salaire('salaire');
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
 
@@ -129,14 +118,12 @@ class EmployerController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new EmployerModel);
+        $form = new Form(new BulletinPayeModel);
 
         $form->display('ID');
-        $form->text('nom', 'nom')->rules('required');
-        $form->image('image', 'image');
-        $form->select('poste','poste')->options(PosteModel::all()->pluck('name', 'id'))->default(1)->rules('required');
-        $form->mobile('telephone', 'telephone');
-        $form->select('compte','compte')->options(Administrator::all()->pluck('name', 'id'));
+        $form->select('employer_id','Employer')->options(EmployerModel::all()->pluck('nom', 'id'))->default(1)->rules('required');
+        $form->date('date', 'date')->rules('required');
+        $form->number('salaire', 'salaire')->rules('required');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));
 

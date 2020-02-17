@@ -16,10 +16,14 @@ Route::group([
         Route::resource('/produit', 'ProduitController');
         Route::resource('/produitstock', 'ProduitStockController');
         Route::resource('/stock', 'StockController');
+        
         Route::resource('/produitfacture', 'ProduitFactureController');
         Route::resource('/facture', 'FactureController');
         Route::resource('/fournisseur', 'FournisseurController');
         Route::resource('/produitcathegorie', 'CathegorieController');
+    });
+    Route::prefix('paie')->group(function(){
+        Route::resource('/employer', 'BulletinPayeController');
     });
     Route::prefix('comptabilite')->group(function(){
  
