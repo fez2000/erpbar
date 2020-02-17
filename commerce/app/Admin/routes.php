@@ -14,12 +14,17 @@ Route::group([
     //$router->get('/stock/fournisseur', 'Fournissuer@index')->name('admin.home');
     Route::prefix('stock')->group(function(){
         Route::resource('/produit', 'ProduitController');
+        Route::resource('/produitstock', 'ProduitStockController');
+        Route::resource('/stock', 'StockController');
+        Route::resource('/produitfacture', 'ProduitFactureController');
+        Route::resource('/facture', 'FactureController');
         Route::resource('/fournisseur', 'FournisseurController');
         Route::resource('/produitcathegorie', 'CathegorieController');
     });
     Route::prefix('comptabilite')->group(function(){
  
-        //Route::resource('/cour', 'CourPlanningController');
+        Route::resource('/employer', 'EmployerController');
+        Route::resource('/poste', 'PosteController');
         
     });
 });
