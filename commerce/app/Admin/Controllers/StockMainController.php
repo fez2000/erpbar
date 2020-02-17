@@ -8,18 +8,18 @@ use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
 
-class HomeController extends Controller
+class StockMainController extends Controller
 {
     public function index(Content $content)
     {
         return $content
             ->title('Dashboard')
             ->description('Description...')
-            ->row(view('admin.title'))
+            ->row(view('admin.stock.title'))
             ->row(function (Row $row) {
 
                 $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::environment());
+                    $column->append(view('admin.charts.stock'));
                 });
 
                 $row->column(4, function (Column $column) {

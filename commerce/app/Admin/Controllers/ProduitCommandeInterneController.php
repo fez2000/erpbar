@@ -3,6 +3,8 @@
 namespace App\Admin\Controllers;
 
 use App\Models\ProduitCommandeInterneModel;
+use App\Models\CommandeInterneModel;
+use App\Models\ProduitModel;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -121,8 +123,10 @@ class ProduitCommandeInterneController extends Controller
         $form = new Form(new ProduitCommandeInterneModel);
 
         $form->display('ID');
-        $form->text('commande_interne_id', 'commande_interne_id');
-        $form->text('produit_id', 'produit_id');
+        $form->text('commande_interne_id', 'Commande interne id');
+        
+        $form->select('produit_id', 'produit')->options(ProduitModel::all()->pluck('name', 'id'));
+        $form->select('commande_interne_id', 'commande')->options(CommandeInterneModel::all()->pluck('id', 'id'));
         $form->text('quantite', 'quantite');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));

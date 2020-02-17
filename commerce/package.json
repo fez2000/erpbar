@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "bootstrap": "^4.4.1",
+        "chart.js": "^2.9.3",
         "laravel-echo": "^1.6.1",
         "socket.io-client": "^2.3.0"
     }

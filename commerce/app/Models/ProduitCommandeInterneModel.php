@@ -8,7 +8,7 @@ use App\Models\CommandeInterneModel;
 class ProduitCommandeInterneModel extends Model
 {
     protected $table = 'ProduitCommandeInterne';
-        protected $fillable = [ 'produit_id','quantite'];
+    protected $fillable = [ 'produit_id','quantite'];
     public function commande_interne()
     {
         

@@ -13,8 +13,11 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('admin.home');
     //$router->get('/stock/fournisseur', 'Fournissuer@index')->name('admin.home');
     Route::prefix('stock')->group(function(){
+        Route::get('/', 'StockMainController@index')->name('admin.stock');
         Route::resource('/produit', 'ProduitController');
         Route::resource('/produitstock', 'ProduitStockController');
+        Route::resource('/produitcommandeinterne', 'ProduitCommandeInterneController');
+        Route::resource('/commande', 'CommandeInterneController');
         Route::resource('/stock', 'StockController');
         
         Route::resource('/produitfacture', 'ProduitFactureController');
@@ -26,7 +29,7 @@ Route::group([
         Route::resource('/employer', 'BulletinPayeController');
     });
     Route::prefix('comptabilite')->group(function(){
- 
+        Route::get('/', 'ComptabiliteMainController@index')->name('admin.comptabilite');
         Route::resource('/employer', 'EmployerController');
         Route::resource('/poste', 'PosteController');
         

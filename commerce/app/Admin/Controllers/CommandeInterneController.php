@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\ProduitModel;
+use Encore\Admin\Facades\Admin;
 use App\Models\CommandeInterneModel;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
@@ -119,8 +121,17 @@ class CommandeInterneController extends Controller
         $form = new Form(new CommandeInterneModel);
 
         $form->display('ID');
-        $form->text('auteur', 'auteur');
-        $form->text('status', 'status');
+        $form->text('auteur', 'auteur')->value(Admin::user()->id)->disable();
+        //$form->text('status', 'status');
+        //['ENCOUR','VALIDER','REJETER']
+        $form->text('status', 'status')->value('ENCOUR')->disable();
+         $form->hasMany('produit_commande_interne', function (Form\NestedForm $form) {
+            
+            $form->select('produit_id', 'produit')->options(ProduitModel::all()->pluck('name', 'id'))->rules('required');
+        
+            $form->number('quantite', 'quantite')->min(0)->rules('required');
+            
+        })->rules('required');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));
 

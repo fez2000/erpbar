@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Admin\Controllers;
-use App\Models\EmployerModel;
-use App\Models\BulletinPayeModel;
+
+use App\Models\EtatModel;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -10,8 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-
-class BulletinPayeController extends Controller
+class EtatController extends Controller
 {
     use HasResourceActions;
 
@@ -80,12 +79,12 @@ class BulletinPayeController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new BulletinPayeModel);
+        $grid = new Grid(new EtatModel);
 
         $grid->id('ID');
-        $grid->employer_id('employer_id');
-        $grid->date('date');
-        $grid->salaire('salaire');
+        $grid->commade_id('commade_id');
+        $grid->description('description');
+        $grid->status('status');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
 
@@ -100,14 +99,12 @@ class BulletinPayeController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(BulletinPayeModel::findOrFail($id));
+        $show = new Show(EtatModel::findOrFail($id));
 
         $show->id('ID');
-        $show->employer_id('Employer')->display(function($id) {
-            return EmployerModel::find($id)->name;
-        });
-        $show->date('date');
-        $show->salaire('salaire');
+        $show->commade_id('commade_id');
+        $show->description('description');
+        $show->status('status');
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
 
@@ -121,12 +118,12 @@ class BulletinPayeController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new BulletinPayeModel);
+        $form = new Form(new EtatModel);
 
         $form->display('ID');
-        $form->select('employer_id','Employer')->options(EmployerModel::all()->pluck('nom', 'id'))->default(1)->rules('required');
-        $form->date('date', 'Date')->rules('required');
-        $form->number('salaire', 'Salaire')->rules('required');
+        $form->text('commade_id', 'commade_id');
+        $form->text('description', 'description');
+        $form->text('status', 'status');
         $form->display(trans('admin.created_at'));
         $form->display(trans('admin.updated_at'));
 

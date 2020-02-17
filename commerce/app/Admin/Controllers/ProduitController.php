@@ -85,16 +85,16 @@ class ProduitController extends Controller
         $grid = new Grid(new ProduitModel);
 
         $grid->id('ID');
-        $grid->name('name');
-        $grid->cathegorie('cathegorie')->display(function($id) {
+        $grid->name('Nom');
+        $grid->cathegorie('Cathegorie')->display(function($id) {
             return FournisseurModel::find($id)->name;
         });
-        $grid->picture('picture');
+        $grid->picture('Image');
         $grid->type('type')->display(function($id) {
             return CathegorieModel::find($id)->name;
         });
-        $grid->prix_achat('prix_achat');
-        $grid->prix_vente('prix_vente');
+        $grid->prix_achat('Prix achat');
+        $grid->prix_vente('Prix vente');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
         
