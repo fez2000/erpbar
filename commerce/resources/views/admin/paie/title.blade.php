@@ -26,10 +26,10 @@
 </style>
 
 <div class="title">
-Stock
+Paie
 </div>
 <div class="links">
     <a href="/admin/comptabilite" >Comptabilite</a>
-    <a href="/admin/paie"  >Paie</a>
+    <a href="/admin/stock"  >Stock</a>
     
 </div>

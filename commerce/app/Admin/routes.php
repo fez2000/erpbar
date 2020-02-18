@@ -27,11 +27,12 @@ Route::group([
     });
     Route::prefix('paie')->group(function(){
         Route::resource('/employer', 'BulletinPayeController');
+        Route::get('/', 'PaieMainController@index')->name('admin.paie');
     });
     Route::prefix('comptabilite')->group(function(){
         Route::get('/', 'ComptabiliteMainController@index')->name('admin.comptabilite');
         Route::resource('/employer', 'EmployerController');
         Route::resource('/poste', 'PosteController');
-        
+        Route::resource('/etats', 'EtatController');
     });
 });

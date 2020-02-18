@@ -7,31 +7,19 @@ use Encore\Admin\Controllers\Dashboard;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
-use App\Models\ProduitStockModel;
-use App\Models\StockModel;
-use App\Models\ProduitModel;
 
-
-class StockMainController extends Controller
+class PaieMainController extends Controller
 {
     public function index(Content $content)
     {
-   
-        
-       
         return $content
             ->title('Dashboard')
             ->description('Description...')
-            ->row(view('admin.stock.title'))
+            ->row(view('admin.paie.title'))
             ->row(function (Row $row) {
-                
 
                 $row->column(4, function (Column $column) {
-                    $data = ProduitStockModel::all();
-                    foreach($data as $v){
-                        $
-                    }
-                    $column->append(view('admin.charts.stock',['data' => $data]));
+                    $column->append(view('admin.charts.stock'));
                 });
 
                 $row->column(4, function (Column $column) {

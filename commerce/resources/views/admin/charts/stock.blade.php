@@ -2,6 +2,8 @@
 <script>
 $(function () {
     var ctx = document.getElementById("myChart").getContext('2d');
+    var data = @json($data);
+    console.log(data)
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
