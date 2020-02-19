@@ -131,11 +131,11 @@ class FactureController extends Controller
 
         $form->display('ID');
         $form->text('client_id', 'client_id');
-        $form->hasMany('produitfacture', function (Form\NestedForm $form) {
+        $form->hasMany('produitfacture', 'Produit consommer', function (Form\NestedForm $form) {
             
-            $form->select('produit_id', 'produit')->options(ProduitModel::all()->pluck('name', 'id'));
+            $form->select('produit_id', 'produit')->options(ProduitModel::all()->pluck('name', 'id'))->rules('required');
         
-            $form->number('quantite', 'quantite')->min(0);
+            $form->number('quantite', 'quantite')->min(0)->rules('required');
             
         });
         $form->display(trans('admin.created_at'));

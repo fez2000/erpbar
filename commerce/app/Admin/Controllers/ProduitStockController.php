@@ -85,7 +85,9 @@ class ProduitStockController extends Controller
 
         $grid->id('ID');
         $grid->produit('produit');
-        $grid->stock('stock');
+        $grid->stock('stock', function($s){
+            return $s->name;
+        });
         $grid->quantite('quantite');
         $grid->min('quantite min');
         $grid->max('quantite max');

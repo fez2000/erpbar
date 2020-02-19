@@ -5,7 +5,7 @@
         <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
             </button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+
         </div>
     </div>
 
@@ -21,7 +21,11 @@
                 </tr>
                 <tr>
                     <td width="120px">Alerte Produit bas</td>
-                    <td>{{ $nombre_produit }}</td>
+                    <td>{{ $nombre_alert }}</td>
+                </tr>
+                <tr>
+                    <td width="120px">Commandes non traiter</td>
+                    <td>{{ $commande_pas_traiter }}</td>
                 </tr>
             </table>
         </div>

@@ -7,7 +7,9 @@ use Encore\Admin\Controllers\Dashboard;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
-
+use App\Models\ProduitStockModel;
+use App\Models\StockModel;
+use App\Models\ProduitCommandeInterneModel;
 class HomeController extends Controller
 {
     public function index(Content $content)
@@ -17,17 +19,17 @@ class HomeController extends Controller
             ->description('Description...')
             ->row(view('admin.title'))
             ->row(function (Row $row) {
-
+                
                 $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::environment());
+                    $column->append(view('admin.stockpreview',['commande_pas_traiter' => ProduitCommandeInterneModel::where('status = ENCOUR')->get()->count(),'nombre_stock'=>StockModel::all()->count() ,'nombre_alert' => ProduitStockModel::where('quantite', '<=' <'min')->count()]));
                 });
 
                 $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::extensions());
+                    //$column->append();
                 });
 
                 $row->column(4, function (Column $column) {
-                    $column->append(Dashboard::dependencies());
+                  //  $column->append();
                 });
             });
     }

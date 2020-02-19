@@ -16,6 +16,7 @@ class CreateCommandeInterneTable extends Migration
         Schema::create('CommandeInterne', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('auteur')->index();
+            $table->date('date');
             $table->enum('status',['ENCOUR','VALIDER','REJETER'])->default('ENCOUR');
             $table->timestamps();
         });

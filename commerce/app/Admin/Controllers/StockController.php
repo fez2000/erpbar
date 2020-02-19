@@ -135,9 +135,9 @@ class StockController extends Controller
         $form->hasMany('produitstock', 'Produit en stock' ,function (Form\NestedForm $form) {
             
             $form->select('produit_id', 'produit')->options(ProduitModel::all()->pluck('name', 'id'));
-            $form->number('min', 'quantite min')->min(0);
-            $form->number('max', 'quantite max')->min(0);
-            $form->number('quantite', 'quantite')->min(0);
+            $form->number('min', 'quantite min')->min(0)->rules('required');
+            $form->number('max', 'quantite max')->min(0)->rules('required');
+            $form->number('quantite', 'quantite')->min(0)->rules('required');
             
         });
         

@@ -17,17 +17,19 @@ Route::group([
         Route::resource('/produit', 'ProduitController');
         Route::resource('/approvisionnement', 'ApprovisionementController');
         Route::resource('/produitstock', 'ProduitStockController');
-        Route::resource('/produitcommandeinterne', 'ProduitCommandeInterneController');
+        
         Route::resource('/commande', 'CommandeInterneController');
         Route::resource('/stock', 'StockController');
+        Route::resource('/produitcommandeinterne', 'ProduitCommandeInterneController');
         
-        Route::resource('/produitfacture', 'ProduitFactureController');
-        Route::resource('/facture', 'FactureController');
         Route::resource('/fournisseur', 'FournisseurController');
         Route::resource('/produitcathegorie', 'CathegorieController');
     });
     Route::prefix('caisse')->group(function(){
-
+        Route::resource('/produitcommandeinterne', 'ProduitCommandeInterneController');
+        Route::resource('/commande', 'CommandeInterneController');
+        Route::resource('/produitfacture', 'ProduitFactureController');
+        Route::resource('/facture', 'FactureController');
     });
     Route::prefix('paie')->group(function(){
         Route::resource('/employer', 'BulletinPayeController');
