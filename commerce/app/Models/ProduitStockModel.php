@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\StockModel;
-
+use App\Models\ProduitModel;
 class ProduitStockModel extends Model
 {
     protected $table = 'ProduitStock';
@@ -13,5 +13,8 @@ class ProduitStockModel extends Model
     {
         
         return $this->belongsTo(StockModel::class, 'stock_id');
+    }
+    public function produit(){
+        return $this->hasOne('App\Models\ProduitModel','id','produit_id');
     }
 }

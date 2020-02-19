@@ -5,7 +5,7 @@ $(function () {
     var data = @json($data);
     console.log(data)
     var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'pie',
         data: {
             labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
             datasets: [{

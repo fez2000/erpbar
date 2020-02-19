@@ -12,6 +12,7 @@ use App\Models\StockModel;
 use App\Models\ProduitModel;
 use App\Models\EmployerModel;
 use App\Models\ProduitCommandeInterneModel;
+use App\Models\CathegorieModel;
 class HomeController extends Controller
 {
     public function index(Content $content)
@@ -22,11 +23,11 @@ class HomeController extends Controller
             ->row(view('admin.title'))
             ->row(function (Row $row) {
                 
-                $row->column(4, function (Column $column) {
+                $row->column(6, function (Column $column) {
                     $column->append(view('admin.stockpreview',['commande_pas_traiter' => ProduitCommandeInterneModel::where('status = ENCOUR')->get()->count(),'nombre_stock'=>StockModel::all()->count() ,'nombre_alert' => ProduitStockModel::where('quantite', '<=' <'min')->count()]));
                 });
 
-                $row->column(4, function (Column $column) {
+                $row->column(6, function (Column $column) {
                     $capital = 0;
                     foreach (ProduitStockModel::all() as $p){
                         $pr = ProduitModel::where('id' ,'=',$p->produit_id)->get();
@@ -35,8 +36,15 @@ class HomeController extends Controller
                     $column->append(view('admin.comptabilitepreview',['capital'=> $capital ,'employer' => EmployerModel::all()->count()]));
                 });
 
-                $row->column(4, function (Column $column) {
-                  //  $column->append();
+                
+            })->row(function(Row $row){
+                $row->column(3,function(Column $column){
+                    $data = ProduitStockModel::all();
+                    foreach($data as $v){
+                        $v->produit;
+                        $v->stock;
+                    }
+                    $column->append(view('admin.charts.produit', ['data'=> $data,'cathe' => Cathegorie::all() ]));
                 });
             });
     }
