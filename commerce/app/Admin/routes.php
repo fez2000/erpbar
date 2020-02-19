@@ -26,6 +26,9 @@ Route::group([
         Route::resource('/fournisseur', 'FournisseurController');
         Route::resource('/produitcathegorie', 'CathegorieController');
     });
+    Route::prefix('caisse')->group(function(){
+
+    });
     Route::prefix('paie')->group(function(){
         Route::resource('/employer', 'BulletinPayeController');
         Route::get('/', 'PaieMainController@index')->name('admin.paie');
