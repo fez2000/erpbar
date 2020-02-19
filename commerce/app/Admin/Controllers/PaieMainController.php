@@ -19,7 +19,11 @@ class PaieMainController extends Controller
             ->row(function (Row $row) {
 
                 $row->column(4, function (Column $column) {
-                    $column->append(view('admin.charts.stock'));
+                    $data = ProduitStockModel::all();
+                    foreach($data as $v){
+                        $v;
+                    }
+                    $column->append(view('admin.charts.stock',['data' => $data]));
                 });
 
                 $row->column(4, function (Column $column) {
