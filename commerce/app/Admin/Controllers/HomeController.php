@@ -9,6 +9,8 @@ use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
 use App\Models\ProduitStockModel;
 use App\Models\StockModel;
+use App\Models\ProduitModel;
+use App\Models\EmploerModel;
 use App\Models\ProduitCommandeInterneModel;
 class HomeController extends Controller
 {
@@ -25,7 +27,12 @@ class HomeController extends Controller
                 });
 
                 $row->column(4, function (Column $column) {
-                    //$column->append();
+                    $capital = 0;
+                    foreach (ProduitStockModel::all() as $p){
+                        $pr = ProduitModel::where('id' ,'=',$p->produit_id)->get();
+                        $capital += $p->quantite * $pr[0]->prix_vente;
+                    }
+                    $column->append(view('admin.comptabilitepreview',['capital'=> $capital ,'employer' => EmploerModel::all()->count()]));
                 });
 
                 $row->column(4, function (Column $column) {
