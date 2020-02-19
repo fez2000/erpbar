@@ -17,6 +17,7 @@ class CreateProduitPerduTable extends Migration
             $table->increments('id');
             $table->integer('produit_id')->index();
             $table->float('quantite');
+            $table->date('date');
             $table->timestamps();
         });
     }

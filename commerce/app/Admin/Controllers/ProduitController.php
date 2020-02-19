@@ -93,8 +93,9 @@ class ProduitController extends Controller
         $grid->type('type')->display(function($id) {
             return CathegorieModel::find($id)->name;
         });
-        $grid->prix_achat('Prix achat');
-        $grid->prix_vente('Prix vente');
+        $grid->prix_achat('Prix d\'achat');
+        $grid->prix_vente('Prix de vente');
+        $grid->littre('littre');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
         
@@ -140,15 +141,15 @@ class ProduitController extends Controller
 
         
         $form->column(1/2,function($form){
-        $form->display('ID');
+       
         $form->text('name', 'name')->rules('required');
         $form->select('cathegorie','cathegorie')->options(FournisseurModel::all()->pluck('name', 'id'))->default(1)->rules('required');
         
         $form->select('type','type')->options(CathegorieModel::all()->pluck('name', 'id'))->default(1)->rules('required');
-        $form->currency('prix_achat', 'prix_achat')->symbol('FCFA');
-        $form->currency('prix_vente', 'prix_vente')->symbol('FCFA');
-        $form->display(trans('admin.created_at'));
-        $form->display(trans('admin.updated_at'));
+        $form->currency('prix_achat', 'Prix d\'achat')->symbol('FCFA');
+        $form->currency('prix_vente', 'Prix de vente')->symbol('FCFA');
+        $form->currency('littre', 'Nombre Littre')->symbol('L')->default(1);
+        
         });
         $form->column(1/2,function($form){
             $form->image('picture', 'picture');

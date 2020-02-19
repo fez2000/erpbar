@@ -87,6 +87,8 @@ class ProduitStockController extends Controller
         $grid->produit('produit');
         $grid->stock('stock');
         $grid->quantite('quantite');
+        $grid->min('quantite min');
+        $grid->max('quantite max');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
 
@@ -107,6 +109,8 @@ class ProduitStockController extends Controller
         $show->produit('produit_id');
         $show->stock('stock_id');
         $show->quantite('quantite');
+        $form->min('quantite min');
+        $form->max('quantite max');
         $show->created_at(trans('admin.created_at'));
         $show->updated_at(trans('admin.updated_at'));
 
@@ -122,12 +126,13 @@ class ProduitStockController extends Controller
     {
         $form = new Form(new ProduitStockModel);
 
-        $form->display('ID');
+        
         $form->select('produit_id', 'produit')->options(ProduitModel::all()->pluck('name', 'id'));
         $form->select('stock_id', 'stock')->options(StockModel::all()->pluck('name', 'id'));
         $form->number('quantite', 'quantite')->min(0);
-        $form->display(trans('admin.created_at'));
-        $form->display(trans('admin.updated_at'));
+        $form->number('min', 'quantite min')->min(0);
+        $form->number('max', 'quantite max')->min(0);
+
 
         return $form;
     }

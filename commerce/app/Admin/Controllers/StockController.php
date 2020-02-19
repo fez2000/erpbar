@@ -102,13 +102,15 @@ class StockController extends Controller
 
         $show->id('ID');
         $show->name('name');
-        $show->produitstock('produitstock',function ($produit) {
+        $show->produitstock('produit en stock',function ($produit) {
 
         $produit->resource('/admin/stock/produitstock');
 
         $produit->id();
         $produit->produit_id();
         $produit->quantite();
+        $produit->min('quantite min');
+        $produit->max('quantite max');
         $produit->created_at();
         $produit->updated_at();
 
@@ -128,18 +130,17 @@ class StockController extends Controller
     {
         $form = new Form(new StockModel);
 
-        $form->display('ID');
-        $form->text('name', 'name');
-        $form->hasMany('produitstock', function (Form\NestedForm $form) {
+
+        $form->text('name', 'Nom du stock');
+        $form->hasMany('produitstock', 'Produit en stock' ,function (Form\NestedForm $form) {
             
             $form->select('produit_id', 'produit')->options(ProduitModel::all()->pluck('name', 'id'));
-        
+            $form->number('min', 'quantite min')->min(0);
+            $form->number('max', 'quantite max')->min(0);
             $form->number('quantite', 'quantite')->min(0);
             
         });
-        $form->display(trans('admin.created_at'));
-        $form->display(trans('admin.updated_at'));
-
+        
         return $form;
     }
 }

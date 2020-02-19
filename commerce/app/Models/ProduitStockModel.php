@@ -8,7 +8,7 @@ use App\Models\StockModel;
 class ProduitStockModel extends Model
 {
     protected $table = 'ProduitStock';
-    protected $fillable = [ 'produit_id','quantite'];
+    protected $fillable = [ 'produit_id','quantite', 'min', 'max'];
     public function stock()
     {
         

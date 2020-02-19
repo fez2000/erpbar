@@ -21,6 +21,7 @@ class CreateProduitTable extends Migration
             $table->integer('type')->index();
             $table->float('prix_achat');
             $table->float('prix_vente');
+            $table->float('littre');
             $table->timestamps();
         });
     }

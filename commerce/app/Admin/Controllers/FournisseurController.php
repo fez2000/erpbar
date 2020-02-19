@@ -118,12 +118,10 @@ class FournisseurController extends Controller
     {
         $form = new Form(new FournisseurModel);
 
-        $form->display('ID');
+        
         $form->text('name', 'name');
         $form->image('picture')->removable();
-        $form->display(trans('admin.created_at'));
-        $form->display(trans('admin.updated_at'));
-
+        
         return $form;
     }
 }

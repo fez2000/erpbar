@@ -15,6 +15,7 @@ Route::group([
     Route::prefix('stock')->group(function(){
         Route::get('/', 'StockMainController@index')->name('admin.stock');
         Route::resource('/produit', 'ProduitController');
+        Route::resource('/approvisionnement', 'ApprovisionementController');
         Route::resource('/produitstock', 'ProduitStockController');
         Route::resource('/produitcommandeinterne', 'ProduitCommandeInterneController');
         Route::resource('/commande', 'CommandeInterneController');

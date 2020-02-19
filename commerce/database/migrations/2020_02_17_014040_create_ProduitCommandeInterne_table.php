@@ -18,6 +18,7 @@ class CreateProduitCommandeInterneTable extends Migration
             $table->integer('commande_interne_id')->index();
             $table->integer('produit_id')->index();
             $table->float('quantite');
+            $table->date('date');
             $table->timestamps();
         });
     }

@@ -17,6 +17,8 @@ class CreateProduitStockTable extends Migration
             $table->increments('id');
             $table->integer('produit_id')->index();
             $table->integer('stock_id')->index();
+            $table->float('min');
+            $table->float('max');
             $table->float('quantite');
 
             $table->timestamps();

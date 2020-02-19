@@ -21,7 +21,7 @@ class StockMainController extends Controller
        
         return $content
             ->title('Dashboard')
-            ->description('Description...')
+            ->description('appercu')
             ->row(view('admin.stock.title'))
             ->row(function (Row $row) {
                 
@@ -29,7 +29,7 @@ class StockMainController extends Controller
                 $row->column(4, function (Column $column) {
                     $data = ProduitStockModel::all();
                     foreach($data as $v){
-                        $
+                        $v;
                     }
                     $column->append(view('admin.charts.stock',['data' => $data]));
                 });
