@@ -70,7 +70,7 @@
           
             <div class="top-right links">
                     
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/') }}">Home</a>
                     
                         <a href="{{ url('admin') }}">Admin</a>
 
@@ -79,7 +79,7 @@
             </div>
             <div class="content">
                 <div class="title m-b-md">
-                    Bar-managemnt
+                    Bar-management
                 </div>
                 <div class="subtitle m-b-md">
                     gagner en performance avec votre logiciel de gestion bar
